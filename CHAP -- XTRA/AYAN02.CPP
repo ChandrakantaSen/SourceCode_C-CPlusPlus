@@ -1,0 +1,24 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+int m;
+float x,sum,average;
+clrscr();
+printf"Enter the value one after another\n";
+"Enter a NEGATIVE number at the end\n\n";
+sum=0;
+for(m=1;m<=1000;m++)
+{
+scanf("%f",&x);
+if(x<0)
+break;
+sum+=x;
+}
+average=sum/(float)(m-1);
+printf("\n");
+printf("Number of value=%d\n",m-1);
+printf("Sum	       =%f\n",sum);
+printf("Average	      =%f\n",average);
+getch();
+}

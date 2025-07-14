@@ -1,0 +1,31 @@
+Definition - A circular queue is one in which the insertion of new element is done at the very first location of the queue when the last location of the queue is full. A circular queue overcomes the problem of unutilized space in linear queue.
+
+-- Algorithm of Insertion
+
+  if(front == (rear+1) % MAXSIZE)
+	print "Queue Overflow"
+  else
+	input the data
+	if(front == -1)
+		set front = rear = 0
+		
+	rear = ((rear+1) % MAXSIZE)
+    Q[rear] = data
+  exit
+  
+  
+-- Algorithm of Deletion
+
+	if(front == -1)
+		print "Queue Underflow"
+	else
+		data = Q[front]
+		if(front == rear)
+			set front = rear = -1
+		else
+			front = ((front+1) % MAXSIZE)
+	exit		
+	
+		
+		
+		

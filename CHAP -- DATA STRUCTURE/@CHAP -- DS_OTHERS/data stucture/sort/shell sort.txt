@@ -1,0 +1,90 @@
+Shell sorting was first introduced by Donald Shell.
+It generalized as exchanging sort, such as bubble or insertion sorting, by allowing the comparison and exchange of elements that lie far apart. The running time of Shell sort is heavily dependent on the gap sequence it uses. For many practical variants, determining their time complexity remains an open problem.
+
+Steps for solution of shell sorting:
+
+step.1:
+Set up a inc number. inc number is set according to given elements in the list.
+
+step.2:
+mark each elements which is comes in inc element.
+For example, if list contains 10 elements then and we assume inc is 3 then, marking of elements such as next marking element, add last element +3 to get next element and so on. Then marking element would be 1st element, 4th element(add 3), 7th element(add 3), 10th element.
+
+89  46  99  12  33  14  69  41  33  28
+
+1    2    3    4    5    6   7    8   9   10 [index number]
+
+step.3:
+sort marking elements such as smallest to greater is set as left to right and not change remain element.
+For example, we apply this step in above example:
+
+12  46  99  28  33  14  69  41  33  89
+
+step.4:
+reduce inc number to one i.e. if inc number is earlier is 3 then now it would be 3-1 = 2.
+
+step.5:
+Repeat step 2,3 and 4 till all the elements not sorted.
+
+Let's understand shell sorting using example:
+
+35 12 14 9 15 45 32 95 40 5
+//assume inc=3
+//Now marking 1st element, 1+3=4th element, //4+3=7th element, 7+3=10th element
+
+35  12  14  9  15  45  32 95  40  5
+//step-3 i.e. sorting of marked elements
+
+5  12  14  9  15  45  32  95  40  35
+//now inc=3-1=2
+//new marking is 1st element, 1+2=3th element, //3+2=5 element, 5+2=7th element, 7+2=9th //element
+
+5  12  14  9  15  45  32  95  40  35
+//now sorting of marked elements
+
+5  12  14  9  15  45  32  95  40  35
+//Now inc=2-1=1
+//Now every elements all marked because inc=1
+
+5   12  14  9  15  45  32  95  40 35
+//sorting of marked elements
+
+5  9  12  14  15  32  35  40  45  95
+
+/*c program for sorting array using shell sorting method*/
+#include<stdio.h>
+#include<conio.h>
+int main()
+{
+ int arr[30];
+ int i,j,k,tmp,num;
+ printf("Enter total no. of elements : ");
+ scanf("%d", &num);
+ for(k=0; k<num; k++)
+ {
+   printf("\nEnter %d number : ",k+1);
+   scanf("%d",&arr[k]);
+ }
+ for(i=num/2; i>0; i=i/2)
+ {
+   for(j=i; j<num; j++)
+   {
+     for(k=j-i; k>=0; k=k-i)
+     {
+        if(arr[k+i]>=arr[k])
+            break;
+        else
+        {
+            tmp=arr[k];
+            arr[k]=arr[k+i];
+            arr[k+i]=tmp;
+        }
+     }
+   }
+ }
+ printf("\t**** Shell Sorting ****\n");
+ for(k=0; k<num; k++)
+     printf("%d\t",arr[k]);
+ getch();
+ return 0;
+}

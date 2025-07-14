@@ -1,0 +1,9 @@
+#include<stdio.h>
+#include<conio.h>
+
+void main()
+{
+    int i;
+    i = 0128;
+    printf("%d",i);
+}

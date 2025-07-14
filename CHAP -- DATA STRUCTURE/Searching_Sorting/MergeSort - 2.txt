@@ -1,0 +1,57 @@
+What is Merge Sort?
+
+Merge Sort is a divide-and-conquer algorithm that splits an array into smaller subarrays, sorts each subarray, and then merges them back together in sorted order.
+
+Key Characteristics:
+
+1. Divide-and-conquer approach
+2. Stable sorting algorithm
+3. Time complexity: O(n log n)
+4. Space complexity: O(n)
+5. Suitable for large datasets
+
+How Merge Sort Works:
+
+1. Divide the array into two halves until each subarray has only one element.
+2. Recursively sort each subarray.
+3. Merge adjacent sorted subarrays into a single sorted subarray.
+4. Repeat step 3 until the entire array is sorted.
+
+Merge Sort Steps:
+
+1. Divide
+2. Conquer (recursively sort subarrays)
+3. Merge (combine sorted subarrays)
+
+Advantages:
+
+1. Efficient sorting algorithm
+2. Stable (preserves original order of equal elements)
+3. Scalable (suitable for large datasets)
+4. Easy to implement
+
+Disadvantages:
+
+1. Requires extra memory for merging
+2. Not suitable for real-time sorting
+
+Real-World Applications:
+
+1. Database sorting
+2. File system organization
+3. Data compression
+4. Web search engines
+
+Variations:
+
+1. Top-down Merge Sort
+2. Bottom-up Merge Sort
+3. Iterative Merge Sort
+4. Parallel Merge Sort
+
+Comparison with Other Sorting Algorithms:
+
+1. Quicksort: Merge Sort is more stable and efficient for large datasets.
+2. Heapsort: Merge Sort has better time complexity.
+3. Bubble Sort: Merge Sort is more efficient and scalable.
+

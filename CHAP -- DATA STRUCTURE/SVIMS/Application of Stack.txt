@@ -1,0 +1,32 @@
+-- Application of Stacks: Stacks are the fundamental data structure in computer science with numerous applications,such as -
+
+--- Function Call and Recursion:
+	1. Call Stack: When a function is called, its return type and local variables are pushed onto the stack (call Stack). When the function returns, its values are popped from the stack.
+	
+	2. Recursion: Stacks are essential for implementing recursive function, as they keep track of function calls and its arguments.
+	
+--- Expression Evalution:
+	1. Infix to Postfix Conversion--
+	2. Postfix Evalution
+	
+--- Backtracking Algorithms:
+	1. DFS (Depth First Search)
+	2. BFS (Breadth First Search)
+	
+--- Spanning Tree Algorithms:
+	1. DFS
+	
+--- Queue Implementation
+
+
+
+# Infix Notation: It is a most common way to represent any arithmatic expression, where operators are placed between their operands. eg., (2+3)*4 is an example of infix notation.
+
+# Prefix Notation: It is a notation in which the operator is written before the operands, it is also called Polish Notation (Jan Lukasiewicz). eg., +23 is an example of prefix notation.
+
+# Postfix Notation: In this notation, the operators are written after the operands, that's why it is also called suffix notation or reverse polish notation. eg., 23+ is an example of post fix notation.
+
+# Operator Precedence:
+Exponential Operator: ^					-- High Priority
+Multiplication/Division: *,/			-- Mideum Priority
+Addition/Substration: +,-				-- Low Priority

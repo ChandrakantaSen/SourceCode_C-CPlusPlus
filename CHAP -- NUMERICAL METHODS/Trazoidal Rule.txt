@@ -1,0 +1,89 @@
+/* Trapizoidal Rule */
+
+#include<stdio.h>
+#include<conio.h>
+#include<math.h>
+void main()
+{
+  float x[10],y[10],sum=0,h,temp;
+  int i,n,j,k=0;
+  float fact(int);
+  clrscr();
+  printf("\nhow many record you will be enter: ");
+  scanf("%d",&n);
+  for(i=0; i<n; i++)
+  {
+   printf("\n\nenter the value of x%d: ",i);
+   scanf("%f",&x[i]);
+   printf("\n\nenter the value of f(x%d): ",i);
+   scanf("%f",&y[i]);
+  }
+  h=x[1]-x[0];
+  n=n-1;
+  for(i=0;i<n;i++)
+  {
+    if(k==0)
+    {
+     sum = sum + y[i];
+     k=1;
+    }
+    else
+     sum = sum + 2 * y[i];
+   }
+   sum = sum + y[i];
+   sum = sum * (h/2);
+   printf("\n\n  I = %f  ",sum);
+getch();
+}
+
+/*
+______________________________________
+
+         OUT PUT
+______________________________________
+
+
+how many record you will be enter: 6
+
+
+enter the value of x0: 7.47
+
+
+enter the value of f(x0): 1.93
+
+
+enter the value of x1: 7.48
+
+
+enter the value of f(x1): 1.95
+
+
+enter the value of x2: 7.49
+
+
+enter the value of f(x2): 1.98
+
+
+enter the value of x3: 7.50
+
+
+enter the value of f(x3): 2.01
+
+
+enter the value of x4: 7.51
+
+
+enter the value of f(x4): 2.03
+
+
+enter the value of x5: 7.52
+
+
+enter the value of f(x5): 2.06
+
+
+  I = 0.099652
+
+
+
+*/

@@ -1,0 +1,65 @@
+What is Insertion Sort?
+
+Insertion Sort is a simple sorting algorithm that builds the sorted array one element at a time by inserting each element into its proper position.
+
+Key Characteristics:
+
+1. Simple implementation
+2. Stable sorting algorithm
+3. Time complexity: O(n^2)
+4. Space complexity: O(1)
+5. Efficient for small datasets
+
+How Insertion Sort Works:
+
+1. Start with the first element (already sorted)
+2. Take the next element and compare with previous elements
+3. Insert the element into its proper position
+4. Repeat steps 2-3 until all elements are sorted
+
+Advantages:
+
+1. Easy to implement
+2. Stable (preserves original order of equal elements)
+3. Efficient for small datasets
+4. Low memory requirements
+
+Disadvantages:
+
+1. Inefficient for large datasets (O(n^2) time complexity)
+2. Not scalable
+
+Real-World Applications:
+
+1. Small datasets
+2. Embedded systems
+3. Limited resources
+4. Database query optimization
+
+Variations:
+
+1. Binary Insertion Sort
+2. Shell Sort
+3. Tree Insertion Sort
+
+Comparison with Other Sorting Algorithms:
+
+1. Bubble Sort: Insertion Sort is more efficient
+2. Merge Sort: Insertion Sort is simpler
+3. Quicksort: Insertion Sort is more stable
+
+Example Code (C):
+
+
+void insertionSort(int arr[], int n) {
+    int i, key, j;
+    for (i = 1; i < n; i++) {
+        key = arr[i];
+        j = i - 1;
+        while (j >= 0 && arr[j] > key) {
+            arr[j + 1] = arr[j];
+            j--;
+        }
+        arr[j + 1] = key;
+    }
+}

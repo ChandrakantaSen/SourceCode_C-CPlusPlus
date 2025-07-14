@@ -1,0 +1,32 @@
+-- Circular Queue
+A circular queue is one special type of queue, in which insertion of a new element is done at the very first location of the queue if the last location of the queue is full.
+i.e, A Queue(Q) of n elements then after inserting an element at the last location ((n-1)th position), then the next element will be inserted at the very first location (0th position).
+
+A Circular Queue overcomes the problem of unutilized space of linear queue implemented as arrays. A circular queue also has a front and rear to keep track of the elements to be inserted or deleted and therefore to maintain the unique characteristics of the queue.
+
+-- 1. Insertion Operation
+-- 2. Deletion Operation
+
+# Algorithm for Insertion
+
+step - 1: if(front == ((rear + 1) % Maxsize))
+			print("Queue Overflow...")
+		  else
+			input the value
+			if(front == -1)
+				set front = rear = 0
+			rear = ((rear + 1) % Maxsize))
+			Q[rear] = value
+			
+step - 2: exit
+
+# Algorithm for Deletion
+
+step - 1: if(front == -1)
+			print("Queue underflow...")
+		  else
+			item = Q[front]
+			if(front == rear)
+				set front = rear = -1
+			else
+				front = ((front + 1) % Maxsize))

@@ -1,0 +1,54 @@
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+
+struct DecToBin
+{
+	int dividend;
+	int divisor;
+	int quotient;
+	int remainder;
+} *structPtr;
+
+static int index = 0;
+
+void calc(int );
+
+int main()
+{
+	int number;
+	structPtr = NULL;
+	
+	printf("\n  Enter a number : ");
+	scanf("%d", &number);
+	
+	printf("\n  Before calc(), index = %d\n\n", index);
+	calc(number);
+	printf("\n  After calc(), index = %d\n\n", index);
+	
+	return 0;
+}
+
+void calc(int number)
+{
+	int rem;
+	
+	while (number != 0)
+	{
+		index++;
+		
+		structPtr = (DecToBin *)realloc(structPtr, index * sizeof(DecToBin));
+		
+		rem = number % 2;
+		
+		structPtr[index - 1].dividend = number;
+		structPtr[index - 1].divisor = 2;
+		structPtr[index - 1].remainder = rem;
+		structPtr[index - 1].quotient = number / 2;
+		
+		printf("%d = %d * %d + %d", structPtr[index - 1].dividend, structPtr[index - 1].divisor, structPtr[index - 1].quotient, structPtr[index - 1].remainder);
+		printf("\n");
+		
+		number /= 2;
+	}
+}

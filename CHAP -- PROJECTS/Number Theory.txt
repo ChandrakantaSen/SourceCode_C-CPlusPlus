@@ -1,0 +1,342 @@
+#include <stdio.h>
+#include <conio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <string.h>
+
+int Menu();
+int OddEven(int );
+int IsPrime(int );
+int IsPalindrome(int );
+unsigned long int *FiboGen(int );
+int *FindDivisors(int );
+int *BubbleSort(int Array[], int Len);  
+
+void main()
+{
+	int Choice;
+	int Number;
+	int i;
+	int Exit;
+
+	unsigned long int *FiboArray = NULL;
+	int *DivisorArray = NULL;
+
+	while (1)
+	{
+		system("cls");
+		Choice = Menu();
+		system("cls");
+
+		switch (Choice)
+		{
+			case 0:
+			{
+				printf("\n  Program Terminated.\n\n");				
+				exit(0);
+			}
+			break;
+
+			case 1:
+			{
+				printf("\n  Enter the number : ");
+				scanf_s("%d", &Number, 1);
+
+				if (!OddEven(Number))
+				{
+					printf("\n  %d is an even number.", Number);
+				}
+				else
+				{
+					printf("\n  %d is a odd number.", Number);
+				}			
+
+				printf("\n\nPress any key to continue . . .");								
+				_getch();
+			}
+			break;
+				
+			case 2:
+			{
+				printf("\n  Enter the number : ");
+				scanf_s("%d", &Number, 1);
+		
+				if (Number < 0)
+				{
+					printf("\n  Number should be greater than 0.");
+				}
+				else if (Number == 0 || Number == 1)
+				{
+					printf("\n  %d is not a prime number.", Number);
+				}
+				else
+				{
+					if (IsPrime(Number))
+					{
+						printf("\n  %d is a prime number.", Number);
+					}
+					else
+					{
+						printf("\n  %d is a composite number.", Number);
+					}			
+				}
+				
+				printf("\n\nPress any key to continue . . .");
+				_getch();
+			}
+			break;
+
+			case 3:
+			{
+				printf("\n  Enter the number : ");
+				scanf_s("%d", &Number, 1);
+
+				if (Number < 0)
+				{
+					printf("\n  Number should be greater than 0.");	
+				}
+				else
+				{
+					if (IsPalindrome(Number))
+					{
+						printf("\n  %d is a palindrome number.", Number);
+					}
+					else
+					{
+						printf("\n  %d is a not palindrome number.", Number);
+					}			
+				}
+
+				printf("\n\nPress any key to continue . . .");
+				_getch();
+			}
+			break;
+
+			case 4:
+			{
+				printf("\n  Enter the number of term : ");
+				scanf_s("%d", &Number, 1);
+				
+				if (Number <= 0)
+				{
+					printf("\n  Number should be greater than 0.\n");	
+				}
+				else
+				{
+					FiboArray = FiboGen(Number);
+
+					if(FiboArray != NULL)
+					{
+						printf("\n  The first %d Fibonacci number : \n\n", Number);
+
+						for (i = 0; i < Number; i++)
+						{
+							printf("\tF(%d) = %lu\n", i, FiboArray[i]);
+						}
+					}
+					free(FiboArray);
+				}
+
+				printf("\nPress any key to continue . . .");
+				_getch();
+			}
+			break;
+				
+			case 5:
+			{
+				Exit = 0;
+				printf("\n  Enter the number : ");
+				scanf_s("%d", &Number, 1);
+				
+				if (Number <= 0)
+				{
+					printf("\n  Number should be greater than 0.\n");	
+				}
+				else if(Number == 1)
+				{
+					printf("\n  The divisors of %d : 1.", Number);
+				}
+				else
+				{
+					DivisorArray = FindDivisors(Number);
+
+					if(DivisorArray != NULL)
+					{
+						printf("\n  The divisors of %d :", Number);
+				
+						for (i = 0; !Exit; i++)
+						{
+							printf("\t%d,", DivisorArray[i]);
+
+							if(DivisorArray[i + 1] == Number)
+							{
+								Exit = 1;	
+							}
+						}
+						printf("\t%d.", DivisorArray[i]);
+					}
+
+					free(DivisorArray);
+				}
+
+				printf("\n\nPress any key to continue . . .");
+				_getch();
+			}
+			break;
+
+			default :
+			{
+				printf("\n  Invalid input.");
+				printf("\n\nPress any key to continue . . .");
+				_getch();
+			}
+		}
+	}	
+}
+
+int Menu()
+{
+	int Choice;
+
+	printf("\n\n\t\t\t\t\t\t\t\t\tMENU");
+	printf("\n\t\t\t\t\t\t\t\t\t____");
+	printf("\n\n\t\t\t\t\t\t\t0. Exit.");
+	printf("\n\n\t\t\t\t\t\t\t1. Checking of even or odd.");
+	printf("\n\n\t\t\t\t\t\t\t2. Checking of primality.");
+	printf("\n\n\t\t\t\t\t\t\t3. Checking of palindrome.");
+	printf("\n\n\t\t\t\t\t\t\t4. Generate Fibonacci Number.");
+	printf("\n\n\t\t\t\t\t\t\t5. Find divisors Number.");
+	
+	printf("\n\n\n\t\t\t\t\t\tEnter your choice : ");
+	scanf_s("%d", &Choice, 1);
+
+	return (Choice);
+}
+
+int OddEven(int Number)
+{
+	return (Number % 2);
+}
+
+int IsPrime(int Number)
+{
+	int SqrtNum = (int)sqrt((double)Number);
+	int i;
+
+	for (i = 2; i <= SqrtNum; i++)
+	{
+		if (Number % i == 0)
+		{
+			return (0);	
+		}
+	}
+
+	return (1);
+}
+
+int IsPalindrome(int Number)
+{
+	char String[10];
+	char CopyString[10];
+
+	_itoa_s(Number, String, 65, 10);
+
+	strcpy_s(CopyString, 10, String);
+
+	return (!strcmp(CopyString, _strrev(String)));
+}
+
+unsigned long int *FiboGen(int n)
+{
+	int i;
+	unsigned long int *FiboArray = NULL;
+
+	FiboArray = calloc(n, sizeof(unsigned long int));
+
+	if(FiboArray == NULL)
+	{
+		puts("\n  Memory allocation unsuccessfull.");
+		return NULL;
+	}
+
+	FiboArray[0] = 0;
+	FiboArray[1] = 1;
+
+	for (i = 2; i < n; i++)
+	{
+		FiboArray[i] = FiboArray[i - 1] + FiboArray[i - 2];
+	}
+
+	return (FiboArray);
+}
+
+int *FindDivisors(int Number)
+{
+	int *Divisors = NULL;
+	int Index = 0;
+	int Div = 0;
+	int SqrtNum = (int)sqrt((double)Number);
+	int flag = 0;
+	int i;
+
+	do
+	{
+		Div++;
+
+		if(Number % Div == 0)
+		{
+			Index += 2;
+			Divisors = realloc(Divisors, Index * sizeof(int));
+
+			if(Divisors == NULL)
+			{
+				puts("\n  Memory allocation unsuccessful.");	
+				return (NULL);
+			}
+
+			Divisors[Index - 2] = Div;
+			Divisors[Index - 1] = Number / Div;
+		}
+	}while(Div != SqrtNum);
+
+	if(SqrtNum * SqrtNum == Number)
+	{
+		flag = 1;
+
+		for(i = 0; i< Index; i++)
+		{
+			if(Divisors[i] == SqrtNum)
+			{
+				break;	
+			}
+		}
+
+		while(++i < Index)
+		{
+			Divisors[i - 1] = Divisors[i];
+		}
+	}  
+
+	return ((flag == 0) ? BubbleSort(Divisors, Index) : BubbleSort(Divisors, Index - 1));
+}
+
+int *BubbleSort(int Array[], int Len)  
+{  
+	int i, j; 
+	int Temp;  
+
+	for(i = Len - 2;i >= 0; i--)  
+	{  
+		for(j = 0; j <= i; j++)  
+		{  
+			if(Array[j] > Array[j+1])  
+			{  
+				Temp = Array[j];  
+                Array[j] = Array[j+1];  
+                Array[j+1] = Temp;  
+			}  
+		}
+	}
+
+	return (Array);
+}
